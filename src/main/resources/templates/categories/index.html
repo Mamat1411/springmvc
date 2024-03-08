@@ -4,7 +4,13 @@
 
 <body>
   <section layout:fragment="container">
-    <h1>Get All Categories</h1>
+    <h1>Category Data</h1>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary my-3" onclick="openForm()">
+      Add Category Data
+    </button>
+
     <table class="table table-hover table-column-stripped">
       <thead>
         <tr>
@@ -23,12 +29,48 @@
           <td th:text="${category.description}"></td>
           <td>
             <a href="" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-            <a href="" class="btn btn-danger"><i class="bi bi-x-circle-fill"></i></a>
+            <a href="" class="btn btn-danger"><i class="bi bi-x-octagon"></i></a>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalTitle">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  <script>
+      function openForm() {
+        $.ajax({
+            url:'/categories/form',
+            type:'get',
+            contentType:'html',
+            success:function(categoryForm){
+              $('#myModal').modal('show');
+              $('.modal-title').html("Category Form");
+              $('.modal-body').html(categoryForm);
+            }
+        });
+      }
+  </script>
+  
   </section>
 </body>
+
 
 </html>

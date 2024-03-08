@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pembekalanjava.v2.categories.entities.Category;
 import com.pembekalanjava.v2.categories.services.CategoryService;
 
+
 @Controller
 @RequestMapping("/categories")
 public class CategoryMvcController {
@@ -25,4 +26,13 @@ public class CategoryMvcController {
         view.addObject("categoryData", categories);
         return view;
     }
+
+    @GetMapping("/form")
+    public ModelAndView form() {
+        ModelAndView view = new ModelAndView("categories/form");
+        Category category = new Category();
+        view.addObject("category", category);
+        return view;
+    }
+    
 }
