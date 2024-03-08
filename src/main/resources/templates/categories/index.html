@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" xmlns="https://www.thymeleaf.org" xmlns:layout="http://www.ultreaq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main}">
+
+<body>
+  <section layout:fragment="container">
+    <h1>Get All Categories</h1>
+    <table class="table table-hover table-column-stripped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Category Name</th>
+          <th scope="col">Initial</th>
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="category : ${categoryData}">
+          <th scope="row">1</th>
+          <td th:text="${category.name}"></td>
+          <td th:text="${category.initial}"></td>
+          <td th:text="${category.description}"></td>
+          <td>
+            <a href="" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+            <a href="" class="btn btn-danger"><i class="bi bi-x-circle-fill"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</body>
+
+</html>
