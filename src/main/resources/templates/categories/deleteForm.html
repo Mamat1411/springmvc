@@ -1,0 +1,6 @@
+<p>Are You Sure to Delete This Data?</p>
+Category Name: <span th:text="${category.name}"></span><br>
+Initial: <span th:text="${category.initial}"></span><br>
+Description: <span th:text="${category.description}"></span><br>
+<hr>
+<button class="btn btn-danger" th:value="${category.id}" onclick="deleteCategory(this.value)">Delete</button>

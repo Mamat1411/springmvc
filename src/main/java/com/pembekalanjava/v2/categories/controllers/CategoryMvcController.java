@@ -61,5 +61,19 @@ public class CategoryMvcController {
         view.addObject("category", category);
         return view;
     }
+
+    @GetMapping("/deleteForm/{id}")
+    public ModelAndView deleteForm(@PathVariable("id") Long id) {
+        ModelAndView view = new ModelAndView("categories/deleteForm");
+        Category category = categoryService.getCategoryById(id);
+        view.addObject("category", category);
+        return view;
+    }
+    
+    @GetMapping("/delete/{id}")
+    public ModelAndView deleteCategory(@PathVariable("id") Long id) {
+        categoryService.deleteCategoryById(id);
+        return new ModelAndView("redirect:/categories");
+    }
     
 }

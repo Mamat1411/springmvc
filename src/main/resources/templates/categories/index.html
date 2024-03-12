@@ -29,7 +29,7 @@
           <td th:text="${category.description}"></td>
           <td>
             <button class="btn btn-warning" th:value="${category.id}" onclick="editForm(this.value)"><i class="bi bi-pencil-square"></i></button>
-            <a href="" class="btn btn-danger"><i class="bi bi-x-octagon"></i></a>
+            <button class="btn btn-danger" th:value="${category.id}" onclick="deleteForm(this.value)"><i class="bi bi-x-circle"></i></button>
           </td>
         </tr>
       </tbody>
@@ -79,6 +79,30 @@
             $('.modal-body').html(categoryForm);
           }
         });
+      }
+
+      function deleteForm(id) {
+        $.ajax({
+          url:`/categories/deleteForm/${id}`,
+          type:`get`,
+          contentType:`html`,
+          success:function(categoryForm){
+            $('#myModal').modal('show');
+            $('.modal-title').html("Delete Category");
+            $('.modal-body').html(categoryForm);
+          }
+        })
+      }
+
+      function deleteCategory(id) {
+        $.ajax({
+          url:`/categories/delete/${id}`,
+          type:`get`,
+          contentType: `html`,
+          success:function(categoryForm){
+            location.reload();
+          }
+        })
       }
   </script>
   
