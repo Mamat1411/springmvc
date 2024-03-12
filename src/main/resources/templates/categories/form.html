@@ -1,6 +1,15 @@
-<form action="" method="post">
+<form th:action="@{~/categories/save}" method="post" th:object="${category}">
     <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <label for="name" class="form-label">Category Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Category Name" required>
     </div>
+    <div class="mb-3">
+        <label for="initial" class="form-label">Initial</label>
+        <input type="text" class="form-control" id="initial" name="initial" placeholder="Category Initial" required>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="description" name="description" placeholder="Category Description" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
 </form>
