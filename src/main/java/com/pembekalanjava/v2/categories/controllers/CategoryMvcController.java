@@ -7,13 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pembekalanjava.v2.categories.entities.Category;
 import com.pembekalanjava.v2.categories.services.CategoryService;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -50,6 +52,14 @@ public class CategoryMvcController {
             }
         }
         return new ModelAndView("redirect:/categories");
+    }
+    
+    @GetMapping("/edit/{id}")
+    public ModelAndView edit(@PathVariable("id") Long id) {
+        ModelAndView view = new ModelAndView("categories/form");
+        Category category = categoryService.getCategoryById(id);
+        view.addObject("category", category);
+        return view;
     }
     
 }

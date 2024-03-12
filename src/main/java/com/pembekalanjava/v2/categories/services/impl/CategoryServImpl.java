@@ -24,5 +24,10 @@ public class CategoryServImpl implements CategoryService{
     public Category saveCategory(Category category) {
         return categoryRepository.save(category);
     }
+
+    @Override
+    public Category getCategoryById(Long id) {
+        return categoryRepository.getCategoryById(id);
+    }
     
 }
